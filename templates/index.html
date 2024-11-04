@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucknow.dev</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap" rel="stylesheet" />
+  <link href="../dist/output.css" rel="stylesheet" />
+  <style>
+
+  
+  
+  .shine {
+      position: fixed; /* Position it at the bottom */
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 20%; /* Adjust this value to control how much of the screen shines */
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); /* White to transparent */
+      pointer-events: none; /* Allow interaction with content underneath */
+  }
+    /* From Uiverse.io by kamehame-ha */
+
+    @font-face {
+      font-family: hinglish;
+      src: url(../src/hing.TTF);
+    }
+
+    .hinglish {
+      font-family: hinglish;
+    }
+
+    /* Slideshow Styles */
+    .slideshow-container {
+      position: relative;
+      max-width: 100%;
+      height: 500px;
+      /* Set the height as needed */
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      /* Hide all slides initially */
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: 0.7;
+      /* Overlay color and opacity */
+    }
+
+    .text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      /* Overlay color and opacity */
+    }
+
+    .fade {
+      animation: fade 1s ease-in-out forwards;
+    }
+
+    /* From Uiverse.io by StealthWorm */
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 13rem;
+      overflow: hidden;
+      height: 3rem;
+      background-size: 300% 300%;
+      cursor: pointer;
+      backdrop-filter: blur(1rem);
+      border-radius: 5rem;
+      transition: 0.5s;
+      animation: gradient_301 5s ease infinite;
+      border: double 1px transparent;
+      background-image: linear-gradient(#212121, #212121),
+        linear-gradient(137.48deg,
+          #ffdb3b 10%,
+          #fe53bb 45%,
+          #8f51ea 67%,
+          #0044ff 87%);
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+    }
+
+    #container-stars {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      transition: 0.5s;
+      backdrop-filter: blur(1rem);
+      border-radius: 5rem;
+    }
+
+    strong {
+      z-index: 2;
+      font-family: "Avalors Personal Use";
+      font-size: 12px;
+      letter-spacing: 5px;
+      color: #ffffff;
+      text-shadow: 0 0 4px white;
+    }
+
+    #glow {
+      position: absolute;
+      display: flex;
+      width: 12rem;
+    }
+
+    .circle {
+      width: 100%;
+      height: 30px;
+      filter: blur(2rem);
+      animation: pulse_3011 4s infinite;
+      z-index: -1;
+    }
+
+    .circle:nth-of-type(1) {
+      background: rgba(254, 83, 186, 0.636);
+    }
+
+    .circle:nth-of-type(2) {
+      background: rgba(142, 81, 234, 0.704);
+    }
+
+    .btn:hover #container-stars {
+      background-color: #212121;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    .btn:active {
+      border: double 4px #fe53bb;
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+      animation: none;
+    }
+
+    .btn:active .circle {
+      background: #fe53bb;
+    }
+
+    #stars {
+      position: relative;
+      background: transparent;
+      width: 200rem;
+      height: 200rem;
+    }
+
+    /* From Uiverse.io by G4b413l */
+    .card svg {
+      height: 25px;
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e7e7e7;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      overflow: hidden;
+      height: 50px;
+      width: 200px;
+    }
+
+    .card::before,
+    .card::after {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      width: 50%;
+      height: 100%;
+      transition: 0.25s linear;
+      z-index: 1;
+    }
+
+    .card::before {
+      content: "";
+      left: 0;
+      justify-content: flex-end;
+      background-color: #9333ea;
+    }
+
+    .card::after {
+      content: "";
+      right: 0;
+      justify-content: flex-start;
+      background-color: #7a2fc0;
+    }
+
+    .card:hover {
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+
+    .card:hover span {
+      opacity: 0;
+      z-index: -3;
+    }
+
+    .card:hover::before {
+      opacity: 0.5;
+      transform: translateY(-100%);
+    }
+
+    .card:hover::after {
+      opacity: 0.5;
+      transform: translateY(100%);
+    }
+
+    .card span {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: whitesmoke;
+      font-family: 'Fira Mono', monospace;
+      font-size: 24px;
+      font-weight: 700;
+      opacity: 1;
+      transition: opacity 0.25s;
+      z-index: 2;
+    }
+
+    .card .social-link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 25%;
+      height: 100%;
+      color: whitesmoke;
+      font-size: 24px;
+      text-decoration: none;
+      transition: 0.25s;
+    }
+
+    .card .social-link svg {
+      text-shadow: 1px 1px rgba(31, 74, 121, 0.7);
+      transform: scale(1);
+    }
+
+    .card .social-link:hover {
+      background-color: rgba(249, 244, 255, 0.774);
+      animation: bounce_613 0.4s linear;
+    }
+
+    @keyframes bounce_613 {
+      40% {
+        transform: scale(1.4);
+      }
+
+      60% {
+        transform: scale(0.8);
+      }
+
+      80% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    #stars::after {
+      content: "";
+      position: absolute;
+      top: -10rem;
+      left: -100rem;
+      width: 100%;
+      height: 100%;
+      animation: animStarRotate 90s linear infinite;
+    }
+
+    #stars::after {
+      background-image: radial-gradient(#ffffff 1px, transparent 1%);
+      background-size: 50px 50px;
+    }
+
+    #stars::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 170%;
+      height: 500%;
+      animation: animStar 60s linear infinite;
+    }
+
+    #stars::before {
+      background-image: radial-gradient(#ffffff 1px, transparent 1%);
+      background-size: 50px 50px;
+      opacity: 0.5;
+    }
+
+    /* From Uiverse.io by JaydipPrajapati1910 */
+    .ui-btn {
+      --btn-default-bg: rgb(50, 50, 50);
+      --btn-padding: 15px 20px;
+      --btn-hover-bg: rgb(51, 51, 51);
+      --btn-transition: .3s;
+      --btn-letter-spacing: .1rem;
+      --btn-animation-duration: 1.2s;
+      --btn-shadow-color: rgba(0, 0, 0, 0.137);
+      --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
+      --hover-btn-color: rgb(255, 131, 93);
+      --default-btn-color: rgb(255, 255, 255);
+      --font-size: 16px;
+      /* 👆 this field should not be empty */
+      --font-weight: 600;
+      --font-family: Menlo, Roboto Mono, monospace;
+      /* 👆 this field should not be empty */
+    }
+
+    /* button settings 👆 */
+
+    .ui-btn {
+      box-sizing: border-box;
+      border-radius: 10px;
+      padding: var(--btn-padding);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--default-btn-color);
+      font: var(--font-weight) var(--font-size) var(--font-family);
+      background: var(--btn-default-bg);
+      border: none;
+      cursor: pointer;
+      transition: var(--btn-transition);
+      overflow: hidden;
+      box-shadow: var(--btn-shadow);
+    }
+
+    .ui-btn span {
+      letter-spacing: var(--btn-letter-spacing);
+      transition: var(--btn-transition);
+      box-sizing: border-box;
+      position: relative;
+      background: inherit;
+    }
+
+    .ui-btn span::before {
+      box-sizing: border-box;
+      position: absolute;
+      content: "";
+      background: inherit;
+    }
+
+    .ui-btn:hover,
+    .ui-btn:focus {
+      background: var(--btn-hover-bg);
+    }
+
+    .ui-btn:hover span,
+    .ui-btn:focus span {
+      color: var(--hover-btn-color);
+    }
+
+    .ui-btn:hover span::before,
+    .ui-btn:focus span::before {
+      animation: chitchat linear both var(--btn-animation-duration);
+    }
+
+    @keyframes chitchat {
+      0% {
+        content: "#";
+      }
+
+      5% {
+        content: ".";
+      }
+
+      10% {
+        content: "^{";
+      }
+
+      15% {
+        content: "-!";
+      }
+
+      20% {
+        content: "#$_";
+      }
+
+      25% {
+        content: "№:0";
+      }
+
+      30% {
+        content: "#{+.";
+      }
+
+      35% {
+        content: "@}-?";
+      }
+
+      40% {
+        content: "?{4@%";
+      }
+
+      45% {
+        content: "=.,^!";
+      }
+
+      50% {
+        content: "?2@%";
+      }
+
+      55% {
+        content: "\;1}]";
+      }
+
+      60% {
+        content: "?{%:%";
+        right: 0;
+      }
+
+      65% {
+        content: "|{f[4";
+        right: 0;
+      }
+
+      70% {
+        content: "{4%0%";
+        right: 0;
+      }
+
+      75% {
+        content: "'1_0<";
+        right: 0;
+      }
+
+      80% {
+        content: "{0%";
+        right: 0;
+      }
+
+      85% {
+        content: "]>'";
+        right: 0;
+      }
+
+      90% {
+        content: "4";
+        right: 0;
+      }
+
+      95% {
+        content: "2";
+        right: 0;
+      }
+
+      100% {
+        content: "";
+        right: 0;
+      }
+    }
+
+    @keyframes animStar {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-135rem);
+      }
+    }
+
+    @keyframes animStarRotate {
+      from {
+        transform: rotate(360deg);
+      }
+
+      to {
+        transform: rotate(0);
+      }
+    }
+
+    @keyframes gradient_301 {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes pulse_3011 {
+      0% {
+        transform: scale(0.75);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+      }
+
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+      }
+
+      100% {
+        transform: scale(0.75);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+      }
+    }
+
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+    #mobile-menu button {
+      font-size: 1.2rem; /* Increase font size for better visibility */
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800 font-pop">
+  <!-- Header -->
+  <header class="bg-white shadow-sm fixed top-0 left-0 z-50 w-full">
+    <div class="container flex flex-wrap items-center justify-between p-4">
+      <!-- Logo -->
+      <img src="../src/ld-logo-2.png" alt="logo" class="w-36" />
+
+      <!-- Navigation Links (Hidden on small screens, visible on medium and larger screens) -->
+      <nav class="hidden md:flex space-x-8 font-semibold">
+        <a href="#home" class="text-gray-600 hover:text-black rounded-lg hover:bg-[#f8f9fa] p-2">Home</a>
+        <a href="#events" class="text-gray-600 hover:text-black rounded-lg hover:bg-[#f8f9fa] p-2">Events</a>
+        <a href="#gdg" class="text-gray-600 hover:text-black rounded-lg hover:bg-[#f8f9fa] p-2">GDGC</a>
+        <a class="text-gray-400 hover:text-red-400 rounded-lg hover:bg-[#f8f9fa] p-2">Coming Soon</a>
+      </nav>
+
+      <!-- Hamburger Icon (Visible only on small screens) -->
+      <button class="md:hidden text-gray-600 focus:outline-none" id="menu-toggle" aria-expanded="false"
+        aria-controls="mobile-menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Modal (Hidden by default, shown when toggled) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white shadow-md hidden z-50 items-center justify-center"
+      style="background-color: rgba(255, 255, 255, 0.95);">
+      <div class="flex flex-col space-y-4 p-8">
+        <button class="text-gray-600 hover:text-black font-semibold self-end" onclick="closeMenu()">Close</button>
+        <nav class="flex flex-col space-y-2 font-semibold">
+          <a href="#home" class="text-gray-600 hover:text-black rounded-lg hover:bg-[#f8f9fa] p-2"
+            onclick="closeMenu()">Home</a>
+          <a href="#events" class="text-gray-600 hover:text-black rounded-lg hover:bg-[#f8f9fa] p-2"
+            onclick="closeMenu()">Events</a>
+          <a href="#gdg" class="text-gray-600 hover:text-black rounded-lg hover:bg-[#f8f9fa] p-2"
+            onclick="closeMenu()">GDGC</a>
+          <a class="text-gray-400 hover:text-red-400 rounded-lg hover:bg-[#f8f9fa] p-2" onclick="closeMenu()">Coming
+            Soon</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <!-- Hero Section -->
+  <section class="mt-14 md:mt-0 text-black h-96 md:h-[500px] overflow-hidden" id="home">
+    <div class="slideshow-container">
+      <div class="slide">
+        <img src="../src/devfext-finalherosection.jpg" alt="Image 1" />
+        <div class="overlay"></div>
+        <div class="text p-6 md:p-20 mt-10 md:mt-20">
+          <div
+            class="container mx-auto md:text-center md:px-5 relative z-10 items-center justify-center flex flex-col gap-1 md:gap-5 w-full">
+            <h1 class="text-3xl md:text-6xl font-semibold fade-in text-white">
+              For & From the Devs of
+              <span class=" text-[#e39d57] hinglish">LUCKNOW</span>
+            </h1>
+            <p class="text-lg md:text-2xl italic fade-in delay-150 text-white">
+              Your go-to hub for Lucknow based tech
+            </p>
+            <div class="sm:w-full md:w-2/3 lg:w-3/6">
+              <img class="mt-4 hidden md:flex" src="../src/gemini-2.png" alt="">
+              <img class="mt-4 flex md:hidden" src="../src/gemini-mob.png" alt="">
+            </div>
+
+            <!-- <a href="#"
+                            class="mt-8 inline-block bg-white text-purple-400 px-4 md:px-6 py-2 md:py-3 rounded-md font-semibold hover:bg-purple-400 hover:text-white transition transform duration-300 ease-in-out hover:scale-105">
+                            Get Started
+                        </a> -->
+          </div>
+        </div>
+      </div>
+      <!-- Additional slides can be added here -->
+    </div>
+  </section>
+
+  <!-- Central Image -->
+  <section class="md:py-16 py-8 flex flex-col items-center pt-20 md:pt-10" id="events">
+    <div class="container mx-auto px-4 md:px-12 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-800">
+        Tech Events in the <span class="text-purple-700">City</span>
+      </h2>
+      <p class="mt-2 text-lg text-gray-600">
+        Register for upcoming events
+      </p>
+    </div>
+
+    <!-- Event Card -->
+    <div
+      class="container mx-auto flex flex-col md:flex-row items-center bg-gray-900 rounded-t-full md:rounded-full my-8 shadow-lg w-5/6 md:w-4/6 transition-transform transform hover:scale-105 py-4 px-6 md:px-8">
+      <!-- Event Image -->
+      <div class="flex-shrink-0 p-4 md:w-1/3 flex justify-center items-center">
+        <img class="w-32 h-32 md:w-52 md:h-52 object-cover rounded-full" src="../src/devfest-logo.png"
+          alt="DevFest Logo" />
+      </div>
+
+      <!-- Event Details -->
+      <div class="flex flex-col w-full">
+        <div class="text-center md:text-left p-6 flex-1">
+          <h3 class="text-3xl md:text-4xl font-bold text-white mb-2">DevFest 2024</h3>
+          <p class="text-gray-300 mb-4 text-sm md:text-xl">
+            DevFest 2024 is here! This year’s focus on Responsible AI explores the importance of developing
+            tech
+            that enhances productivity without causing harm.
+          </p>
+          <div class="flex text-white ">
+            <button type="button" class="btn">
+              <a href="https://www.commudle.com/communities/gdg-lucknow/events/devfest-lucknow-2024">Explore
+                Event</a>
+              <div id="container-stars">
+                <div id="stars"></div>
+              </div>
+
+              <div id="glow">
+                <div class="circle"></div>
+                <div class="circle"></div>
+              </div>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Cards Section -->
+  <section class=" py-8 md:py-16  bg-gray-900 rounded-t-3xl pt-20 md:pt-10" id="gdg">
+    <div class="container mx-auto px-6 md:px-12">
+      <h2
+        class=" text-2xl md:text-3xl font-bold text-center text-white flex flex-col md:flex-row gap-1 md:gap-3 items-center justify-start md:justify-center">
+        Explore <div
+          class="bg-white px-4 rounded-3xl py-1 transition-all duration-300 ease-in-out hover:rounded-xl text-xl md:text-3xl">
+          <span class="text-[#4285f4]"> G</span><span class="text-[#ea4335]">o</span><span
+            class="text-[#f9ab00]">o</span><span class="text-[#4285f4]">g</span><span
+            class="text-[#34a853]">l</span><span class="text-[#ea4335]">e </span> <span class="text-black">DGC</span>
+        </div>
+      </h2>
+      <p class="mt-2 text-sm md:text-lg text-center text-white">
+        Get in touch with all the GDGC Chapters in Lucknow
+      </p>
+      <div class="grid gap-6 mt-8 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Card 1 -->
+        <div
+          class="rounded-2xl px-10 py-2 overflow-hidden shadow-xl  bg-white  transition-transform transform hover:scale-105 flex flex-col items-center mx-auto">
+          <div class="flex items-center justify-center mt-4">
+            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+              alt="GDGC Logo" />
+          </div>
+          <div class="p-4 text-center flex-1">
+            <h2 class="text-xl font-bold text-black mb-2">
+              Integral University Lucknow
+            </h2>
+            <p class="text-black mb-4">
+              <i class="fas fa-map-marker-alt text-black mr-2"></i>
+              Kursi Rd, Dashauli, Uttar Pradesh
+            </p>
+          </div>
+          <button class="ui-btn mb-2">
+            <span>
+              <a href="">View Chapter</a>
+            </span>
+          </button>
+        </div>
+        <!-- Card 2 -->
+        <div
+          class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col items-center mx-auto">
+          <div class="flex items-center justify-center mt-4">
+            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+              alt="GDGC Logo" />
+          </div>
+          <div class="p-4 text-center flex-1">
+            <h2 class="text-xl font-bold text-black mb-2">
+              BN College of Engineering & Technology
+            </h2>
+            <p class="text-black mb-4">
+              <i class="fas fa-map-marker-alt text-black mr-2"></i>
+              Sitapur Rd, Bakshi Ka Talab, Lucknow, Uttar Pradesh
+            </p>
+          </div>
+          <button class="ui-btn mb-2">
+            <span>
+              <a href="https://gdg.community.dev/gdg-on-campus-bn-college-of-engineering-technology-lucknow-india/">View
+                Chapter</a>
+            </span>
+          </button>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col items-center mx-auto">
+          <div class="flex items-center justify-center mt-4">
+            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+              alt="GDGC Logo" />
+          </div>
+          <div class="p-4 text-center flex-1">
+            <h2 class="text-xl font-bold text-black mb-2">
+              Babu Banarasi Das Institute of Technology and Management
+            </h2>
+            <p class="text-black mb-4">
+              <i class="fas fa-map-marker-alt text-black mr-2"></i>
+              Ayodhya Rd, Lucknow, Uattardhona, Uttar Pradesh
+            </p>
+          </div>
+          <button class="ui-btn mb-2">
+            <span>
+              <a
+                href="https://gdg.community.dev/gdg-on-campus-babu-banarasi-das-institute-of-technology-and-management-lucknow-india/">View
+                Chapter</a>
+            </span>
+          </button>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col items-center mx-auto">
+          <div class="flex items-center justify-center mt-4">
+            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+              alt="GDGC Logo" />
+          </div>
+          <div class="p-4 text-center flex-1">
+            <h2 class="text-xl font-bold text-black mb-2">
+              Bansal Institute of Engineering & Technology
+            </h2>
+            <p class="text-black mb-4">
+              <i class="fas fa-map-marker-alt text-black mr-2"></i>
+              Mubarakpur, Kamalabad Barhauli, Lucknow, Uttar Pradesh
+            </p>
+          </div>
+          <button class="ui-btn mb-2">
+            <span>
+              <a
+                href="https://gdg.community.dev/gdg-on-campus-bansal-institute-of-engineering-technology-lucknow-india/">View
+                Chapter</a>
+            </span>
+          </button>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col items-center mx-auto">
+          <div class="flex items-center justify-center mt-4">
+            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+              alt="GDGC Logo" />
+          </div>
+          <div class="p-4 text-center flex-1">
+            <h2 class="text-xl font-bold text-black mb-2">
+              Indian Institute of Information Technology
+            </h2>
+            <p class="text-black mb-4">
+              <i class="fas fa-map-marker-alt text-black mr-2"></i>
+              Chak Ganjaria, C, G. City, Lucknow, Ahmamau, Uttar Pradesh
+            </p>
+          </div>
+          <button class="ui-btn mb-2">
+            <span>
+              <a
+                href="https://gdg.community.dev/gdg-on-campus-indian-institute-of-information-technology-lucknow-india/">View
+                Chapter</a>
+            </span>
+          </button>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col items-center mx-auto">
+          <div class="flex items-center justify-center mt-4">
+            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+              alt="GDGC Logo" />
+          </div>
+          <div class="p-4 text-center flex-1">
+            <h2 class="text-xl font-bold text-black mb-2">
+              Shri Ramswaroop Memorial College of Engineering and Management
+            </h2>
+            <p class="text-black mb-4">
+              <i class="fas fa-map-marker-alt text-black mr-2"></i>
+              C-2/42, Service Rd, Lucknow, Uattardhona, Uttar Pradesh
+            </p>
+          </div>
+          <button class="ui-btn mb-2">
+            <span>
+              <a
+                href="https://gdg.community.dev/gdg-on-campus-shri-ramswaroop-memorial-college-of-engineering-and-management-lucknow-india/">View
+                Chapter</a>
+            </span>
+          </button>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col items-center mx-auto">
+          <div class="flex items-center justify-center mt-4">
+            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+              alt="GDGC Logo" />
+          </div>
+          <div class="p-4 text-center flex-1">
+            <h2 class="text-xl font-bold text-black mb-2">
+              Babu Banarasi Das Northern India Institute of Technology
+            </h2>
+            <p class="text-black mb-4">
+              <i class="fas fa-map-marker-alt text-black mr-2"></i>
+              Faizabad Rd, Lucknow, Uattardhona, Uttar Pradesh
+            </p>
+          </div>
+          <button class="ui-btn mb-2">
+            <span>
+              <a
+                href="https://gdg.community.dev/gdg-on-campus-babu-banarasi-das-northern-india-institute-of-technology-lucknow-india/">View
+                Chapter</a>
+            </span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-black text-white py-8">
+    <div class="container mx-auto px-6 md:px-12 justify-center text-center">
+      <div class="flex flex-col md:flex-row justify-between">
+        <div class="w-full md:w-1/3 mb-4 flex items-center justify-center md:justify-start">
+          <img src="../src/ld-logo-2.png" alt="logo" class="w-36" />
+
+        </div>
+
+        <div class="flex justify-center gap-6">
+
+          <!-- LinkedIn Icon -->
+          <a class="" href="https://www.linkedin.com/company/google-developer-groups-lucknow/" target="_blank">
+            <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" fill="#0077B5"
+              class="hover:fill-white transition-colors duration-300 ">
+              <path
+                d="M4.98 3.5c0 1.38-1.11 2.5-2.48 2.5S0 4.88 0 3.5 1.11 1 2.48 1 4.98 2.12 4.98 3.5zM.02 8h5v16h-5V8zM8.982 8h4.968v2.155c1.547-2.879 11.018-3.086 11.018 3.714V24h-4.988v-8.399c0-5.052-6.029-4.67-6.029 0V24H8.982V8z" />
+            </svg>
+          </a>
+
+          <!-- Instagram Icon -->
+          <a class="social-link" href="https://www.instagram.com/gdglucknow/" target="_blank">
+            <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" fill="#E1306C"
+              class="hover:fill-white transition-colors duration-300 ">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.796.247 2.213.415a4.408 4.408 0 0 1 1.591.953c.457.458.746.977.953 1.59.167.418.358 1.044.415 2.214.058 1.266.068 1.646.068 4.85s-.012 3.584-.07 4.85c-.056 1.17-.247 1.796-.415 2.213a4.408 4.408 0 0 1-.953 1.591c-.458.457-.977.746-1.59.953-.418.167-1.044.358-2.214.415-1.266.058-1.646.068-4.85.068s-3.584-.012-4.85-.07c-1.17-.056-1.796-.247-2.213-.415a4.408 4.408 0 0 1-1.591-.953c-.457-.458-.746-.977-.953-1.59-.167-.418-.358-1.044-.415-2.214C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.056-1.17.247-1.796.415-2.213a4.408 4.408 0 0 1 .953-1.591c.458-.457.977-.746 1.59-.953.418-.167 1.044-.358 2.214-.415C8.416 2.175 8.796 2.163 12 2.163M12 0C8.738 0 8.332.013 7.052.07 5.769.128 4.825.332 4.067.598 3.31.864 2.732 1.3 2.087 1.944c-.645.644-1.08 1.222-1.346 1.979-.266.758-.47 1.702-.528 2.985C.013 8.332 0 8.738 0 12s.013 3.668.07 4.948c.058 1.283.262 2.227.528 2.985.266.758.7 1.336 1.345 1.98.644.645 1.222 1.08 1.979 1.346.758.266 1.702.47 2.985.528 1.28.057 1.686.07 4.948.07s3.668-.013 4.948-.07c1.283-.058 2.227-.262 2.985-.528.758-.266 1.336-.7 1.98-1.346.645-.644 1.08-1.222 1.346-1.98.266-.758.47-1.702.528-2.985.057-1.28.07-1.686.07-4.948s-.013-3.668-.07-4.948c-.058-1.283-.262-2.227-.528-2.985-.266-.758-.7-1.336-1.346-1.98C19.617.645 19.039.21 18.282.079c-.758-.266-1.702-.47-2.985-.528C15.668.013 15.262 0 12 0z" />
+              <path
+                d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.164a4.002 4.002 0 1 1 0-8.004 4.002 4.002 0 0 1 0 8.004zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z" />
+            </svg>
+          </a>
+
+          <!-- Twitter Icon -->
+          <a class="social-link" href="https://twitter.com/gdglko" target="_blank">
+            <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" fill="#1DA1F2"
+              class="hover:fill-white transition-colors duration-300 ">
+              <path
+                d="M24 4.557a9.832 9.832 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724 9.87 9.87 0 0 1-3.127 1.197 4.916 4.916 0 0 0-8.385 4.482 13.942 13.942 0 0 1-10.11-5.138 4.917 4.917 0 0 0 1.524 6.573A4.903 4.903 0 0 1 .96 9.557v.063a4.916 4.916 0 0 0 3.941 4.827 4.902 4.902 0 0 1-2.212.084 4.918 4.918 0 0 0 4.588 3.417 9.867 9.867 0 0 1-6.102 2.103c-.395 0-.785-.023-1.17-.068a13.945 13.945 0 0 0 7.548 2.213c9.057 0 14.01-7.5 14.01-14.01 0-.213-.004-.425-.014-.637A10.004 10.004 0 0 0 24 4.557z" />
+            </svg>
+          </a>
+        </div>
+
+      </div>
+      <div class="text-center mt-4 md:mt-8 text-gray-400">
+        © 2024 Lucknow.dev. All rights reserved.
+      </div>
+      <p class="mt-2 text-gray-300 text-sm">
+        Developed by: <a href="https://www.linkedin.com/in/sayedafaq/" target="_blank" class="underline">Sayed Afaq</a>
+        & <a href="https://www.linkedin.com/in/adnan-sheikh-303879252/" target="_blank" class="underline">Adnan
+          Sheikh</a>
+      </p>
+    </div>
+  </footer>
+  
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+      slides[slideIndex - 1].style.display = "block";
+      slides[slideIndex - 1].classList.add("fade");
+      setTimeout(showSlides, 5000);
+    }
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu.style.display === 'hidden') {
+        console.log('opening')
+        mobileMenu.style.display = 'block';
+      }
+    });
+
+    // Function to toggle the mobile menu
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.style.display = mobileMenu.style.display === 'none' || mobileMenu.style.display === '' ? 'block' : 'none';
+    });
+
+    // Function to close the menu
+    function closeMenu() {
+      document.getElementById('mobile-menu').style.display = 'none';
+    }
+
+    // Toggle mobile menu visibility
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', !isOpen);
+    mobileMenu.classList.toggle('hidden', isOpen);
+  });
+
+  </script>
+  
+  <div class="shine"></div>
+</body>
+
+</html>
