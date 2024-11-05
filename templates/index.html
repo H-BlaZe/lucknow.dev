@@ -565,10 +565,10 @@
 
 <body class="bg-white text-gray-800 font-pop">
   <!-- Header -->
-  <header class="bg-slate-900 shadow-sm fixed top-0 left-0 z-50 w-full px-10">
+  <header class="bg-slate-900 shadow-sm fixed top-0 left-0 z-50 w-full px-0 md:px-10 border-b-2 border-white">
     <div class=" items-center flex justify-between p-4 w-full">
       <!-- Logo -->
-      <img src="../src/ld-logo-2.png" alt="logo" class="w-36" />
+      <a href="#home" > <img src="../src/ld-logo-2.png" alt="logo" class="w-36"> </a>
 
       <!-- Navigation Links (Hidden on small screens, visible on medium and larger screens) -->
       <nav class="hidden md:flex space-x-8 font-semibold">
@@ -576,9 +576,7 @@
           class="text-gray-100 hover:text-black rounded-lg hover:bg-[#f8f9fa] transition-colors duration-500 p-2">Home</a>
         <a href="#events"
           class="text-gray-100 hover:text-black rounded-lg hover:bg-[#f8f9fa] transition-colors duration-500 p-2">Events</a>
-        <a href="#gdg"
-          class="text-gray-100 hover:text-black rounded-lg hover:bg-[#f8f9fa] transition-colors duration-500 p-2">GDGC</a>
-        <a href="#lwl"
+       <a href="#gdg"
           class="text-gray-100 hover:text-black rounded-lg hover:bg-[#f8f9fa] transition-colors duration-500 p-2">Communities</a>
       </nav>
 
@@ -603,8 +601,6 @@
           <a href="#events" class="text-white hover:text-black rounded-lg hover:bg-[#f8f9fa] p-2"
             onclick="closeMenu()">Events</a>
           <a href="#gdg" class="text-white hover:text-black rounded-lg hover:bg-[#f8f9fa] p-2"
-            onclick="closeMenu()">GDGC</a>
-          <a href="#lwl" class="text-white hover:text-black rounded-lg hover:bg-[#f8f9fa] p-2"
             onclick="closeMenu()">Communities</a>
         </nav>
       </div>
@@ -694,7 +690,7 @@
   </section>
 
   <!-- Content Cards Section -->
-  <section class=" py-8 md:py-16  bg-gray-900 rounded-t-3xl pt-15 md:pt-10" id="gdg">
+  <section class=" py-8 md:py-16 bg-gray-900 rounded-t-3xl pt-15 md:pt-20" id="gdg">
 
     <div
       class="container mx-auto px-4 md:px-12 text-center flex flex-col md:flex-row items-center justify-center gap-1">
@@ -711,7 +707,7 @@
           class="text-[#34a853]">l</span><span class="text-[#ea4335] pr-2">e </span> <span class="text-black">DGC</span>
       </div>
     </div>
-    <p class=" text-sm md:text-lg text-gray-400 text-center my-4">
+    <p class=" text-sm md:text-lg text-gray-400 text-center my-4 mb-10">
       Some of our platforms you would ❤️
     </p>
 
@@ -970,7 +966,7 @@
 
   <!-- Footer -->
   <footer class="flex flex-col bg-black text-gray-200 py-8 gap-4 justify-center items-center">
-    <img src="../src/ld-logo-2.png" alt="" class=" w-28 md:w-36">
+    <a href="#home" > <img src="../src/ld-logo-2.png" alt="logo" class="w-36"> </a>
     <p class="text-sm">© 2024 Lucknow.dev. All rights reserved.</p>
   </footer>
 
