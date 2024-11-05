@@ -565,17 +565,21 @@
 
 <body class="bg-white text-gray-800 font-pop">
   <!-- Header -->
-  <header class="bg-slate-900 shadow-sm fixed top-0 left-0 z-50 w-full">
-    <div class="container flex flex-wrap items-center justify-between p-4">
+  <header class="bg-slate-900 shadow-sm fixed top-0 left-0 z-50 w-full px-10">
+    <div class=" items-center flex justify-between p-4 w-full">
       <!-- Logo -->
       <img src="../src/ld-logo-2.png" alt="logo" class="w-36" />
 
       <!-- Navigation Links (Hidden on small screens, visible on medium and larger screens) -->
       <nav class="hidden md:flex space-x-8 font-semibold">
-        <a href="#home" class="text-gray-100 hover:text-black rounded-lg hover:bg-[#f8f9fa] transition-colors duration-500 p-2">Home</a>
-        <a href="#events" class="text-gray-100 hover:text-black rounded-lg hover:bg-[#f8f9fa] transition-colors duration-500 p-2">Events</a>
-        <a href="#gdg" class="text-gray-100 hover:text-black rounded-lg hover:bg-[#f8f9fa] transition-colors duration-500 p-2">GDGC</a>
-        <a href="#lwl" class="text-gray-100 hover:text-black rounded-lg hover:bg-[#f8f9fa] transition-colors duration-500 p-2">Extras</a>
+        <a href="#home"
+          class="text-gray-100 hover:text-black rounded-lg hover:bg-[#f8f9fa] transition-colors duration-500 p-2">Home</a>
+        <a href="#events"
+          class="text-gray-100 hover:text-black rounded-lg hover:bg-[#f8f9fa] transition-colors duration-500 p-2">Events</a>
+        <a href="#gdg"
+          class="text-gray-100 hover:text-black rounded-lg hover:bg-[#f8f9fa] transition-colors duration-500 p-2">GDGC</a>
+        <a href="#lwl"
+          class="text-gray-100 hover:text-black rounded-lg hover:bg-[#f8f9fa] transition-colors duration-500 p-2">Communities</a>
       </nav>
 
       <!-- Hamburger Icon (Visible only on small screens) -->
@@ -588,8 +592,9 @@
     </div>
 
     <!-- Mobile Menu Modal (Hidden by default, shown when toggled) -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white shadow-md hidden z-50 items-center justify-center transition-all duration-500"
-      style="background-color: rgba(19, 19, 19, 0.9);">
+    <div id="mobile-menu"
+      class="fixed inset-0 bg-white shadow-md hidden z-50 items-center justify-center transition-all duration-500"
+      style="background-color: rgba(19, 19, 19, 1);">
       <div class="flex flex-col space-y-4 p-8">
         <button class="text-white hover:text-black font-semibold self-end" onclick="closeMenu()">Close</button>
         <nav class="flex flex-col space-y-2 font-semibold">
@@ -600,7 +605,7 @@
           <a href="#gdg" class="text-white hover:text-black rounded-lg hover:bg-[#f8f9fa] p-2"
             onclick="closeMenu()">GDGC</a>
           <a href="#lwl" class="text-white hover:text-black rounded-lg hover:bg-[#f8f9fa] p-2"
-            onclick="closeMenu()">Extras</a>
+            onclick="closeMenu()">Communities</a>
         </nav>
       </div>
     </div>
@@ -639,6 +644,7 @@
 
   <!-- Central Image -->
   <section class="md:py-16 py-8 flex flex-col items-center pt-20 md:pt-10" id="events">
+
     <div class="container mx-auto px-4 md:px-12 text-center">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-800">
         Tech Events in the <span class="text-purple-700">City</span>
@@ -689,207 +695,46 @@
 
   <!-- Content Cards Section -->
   <section class=" py-8 md:py-16  bg-gray-900 rounded-t-3xl pt-15 md:pt-10" id="gdg">
-    <div class="container mx-auto px-6 md:px-12 flex flex-col gap-4">
-      <h2
-        class=" text-2xl md:text-3xl font-bold text-center text-white flex flex-col md:flex-row gap-3 md:gap-3 items-center justify-start md:justify-center">
-        Explore <div
-          class="bg-white px-4 rounded-3xl py-1 transition-all duration-300 ease-in-out hover:rounded-xl text-xl md:text-3xl">
-          <span class="text-[#4285f4]"> G</span><span class="text-[#ea4335]">o</span><span
-            class="text-[#f9ab00]">o</span><span class="text-[#4285f4]">g</span><span
-            class="text-[#34a853]">l</span><span class="text-[#ea4335]">e </span> <span class="text-black">DGC</span>
-        </div>
+
+    <div
+      class="container mx-auto px-4 md:px-12 text-center flex flex-col md:flex-row items-center justify-center gap-1">
+      <h2 class="hidden md:flex text-2xl md:text-3xl font-bold text-white mr-2">
+        Our Communities +
       </h2>
-      <p class="mt-2 text-sm md:text-lg text-center text-white">
-        Get in touch with all the GDGC Chapters in Lucknow
-      </p>
-      <div class="grid gap-6 mt-8 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Card 1 -->
-        <div
-          class="rounded-2xl px-10 py-2 overflow-hidden shadow-xl  bg-white  transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
-          <div class="flex items-center justify-center mt-4">
-            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
-              alt="GDGC Logo" />
-          </div>
-          <div class="p-4 text-center flex-1">
-            <h2 class="text-xl font-bold text-black mb-2">
-              Integral University Lucknow
-            </h2>
-            <p class="text-black mb-4">
-              <i class="fas fa-map-marker-alt text-black mr-2"></i>
-              Kursi Rd, Dashauli, Uttar Pradesh
-            </p>
-          </div>
-
-          <a href="https://gdg.community.dev/gdg-on-campus-integral-university-lucknow-india/" class="ui-btn mb-2">
-            <span>View Chapter</span>
-          </a>
-        </div>
-        <!-- Card 2 -->
-        <div
-          class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
-          <div class="flex items-center justify-center mt-4">
-            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
-              alt="GDGC Logo" />
-          </div>
-          <div class="p-4 text-center flex-1">
-            <h2 class="text-xl font-bold text-black mb-2">
-              BN College of Engineering & Technology
-            </h2>
-            <p class="text-black mb-4">
-              <i class="fas fa-map-marker-alt text-black mr-2"></i>
-              Sitapur Rd, Bakshi Ka Talab, Lucknow, Uttar Pradesh
-            </p>
-          </div>
-          <a href="https://gdg.community.dev/gdg-on-campus-bn-college-of-engineering-technology-lucknow-india/"
-            class="ui-btn mb-2">
-            <span>View Chapter</span>
-          </a>
-        </div>
-
-        <!-- Card 2 -->
-        <div
-          class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
-          <div class="flex items-center justify-center mt-4">
-            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
-              alt="GDGC Logo" />
-          </div>
-          <div class="p-4 text-center flex-1">
-            <h2 class="text-xl font-bold text-black mb-2">
-              Babu Banarasi Das Institute of Technology and Management
-            </h2>
-            <p class="text-black mb-4">
-              <i class="fas fa-map-marker-alt text-black mr-2"></i>
-              Ayodhya Rd, Lucknow, Uattardhona, Uttar Pradesh
-            </p>
-          </div>
-          <a href="https://gdg.community.dev/gdg-on-campus-babu-banarasi-das-institute-of-technology-and-management-lucknow-india/"
-            class="ui-btn mb-2">
-            <span>View Chapter</span>
-          </a>
-        </div>
-
-        <!-- Card 2 -->
-        <div
-          class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
-          <div class="flex items-center justify-center mt-4">
-            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
-              alt="GDGC Logo" />
-          </div>
-          <div class="p-4 text-center flex-1">
-            <h2 class="text-xl font-bold text-black mb-2">
-              Bansal Institute of Engineering & Technology
-            </h2>
-            <p class="text-black mb-4">
-              <i class="fas fa-map-marker-alt text-black mr-2"></i>
-              Mubarakpur, Kamalabad Barhauli, Lucknow, Uttar Pradesh
-            </p>
-          </div>
-          <a href="https://gdg.community.dev/gdg-on-campus-bansal-institute-of-engineering-technology-lucknow-india/"
-            class="ui-btn mb-2">
-            <span>View Chapter</span>
-          </a>
-        </div>
-
-        <!-- Card 2 -->
-        <div
-          class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
-          <div class="flex items-center justify-center mt-4">
-            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
-              alt="GDGC Logo" />
-          </div>
-          <div class="p-4 text-center flex-1">
-            <h2 class="text-xl font-bold text-black mb-2">
-              Indian Institute of Information Technology
-            </h2>
-            <p class="text-black mb-4">
-              <i class="fas fa-map-marker-alt text-black mr-2"></i>
-              Chak Ganjaria, C, G. City, Lucknow, Ahmamau, Uttar Pradesh
-            </p>
-          </div>
-          <a href="https://gdg.community.dev/gdg-on-campus-indian-institute-of-information-technology-lucknow-india/"
-            class="ui-btn mb-2">
-            <span>View Chapter</span>
-          </a>
-        </div>
-
-        <!-- Card 2 -->
-        <div
-          class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
-          <div class="flex items-center justify-center mt-4">
-            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
-              alt="GDGC Logo" />
-          </div>
-          <div class="p-4 text-center flex-1">
-            <h2 class="text-xl font-bold text-black mb-2">
-              Shri Ramswaroop Memorial College of Engineering and Management
-            </h2>
-            <p class="text-black mb-4">
-              <i class="fas fa-map-marker-alt text-black mr-2"></i>
-              C-2/42, Service Rd, Lucknow, Uattardhona, Uttar Pradesh
-            </p>
-          </div>
-          <a href="https://gdg.community.dev/gdg-on-campus-shri-ramswaroop-memorial-college-of-engineering-and-management-lucknow-india/"
-            class="ui-btn mb-2">
-            <span>View Chapter</span>
-          </a>
-        </div>
-
-        <!-- Card 2 -->
-        <div
-          class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
-          <div class="flex items-center justify-center mt-4">
-            <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
-              alt="GDGC Logo" />
-          </div>
-          <div class="p-4 text-center flex-1">
-            <h2 class="text-xl font-bold text-black mb-2">
-              Babu Banarasi Das Northern India Institute of Technology
-            </h2>
-            <p class="text-black mb-4">
-              <i class="fas fa-map-marker-alt text-black mr-2"></i>
-              Faizabad Rd, Lucknow, Uattardhona, Uttar Pradesh
-            </p>
-          </div>
-          <a href="https://gdg.community.dev/gdg-on-campus-babu-banarasi-das-northern-india-institute-of-technology-lucknow-india/"
-            class="ui-btn mb-2">
-            <span>View Chapter</span>
-          </a>
-        </div>
-
+      <h2 class="flex md:hidden text-2xl md:text-3xl font-bold text-white mr-2">
+        Our Communities
+      </h2>
+      <div
+        class="bg-white w-auto px-4 rounded-xl py-1 transition-all duration-300 ease-in-out hover:rounded-3xl text-xl md:text-3xl font-medium flex flex-row">
+        <span class="flex md:hidden pr-2">+</span><span class="text-[#4285f4]"> G</span><span
+          class="text-[#ea4335]">o</span><span class="text-[#f9ab00]">o</span><span class="text-[#4285f4]">g</span><span
+          class="text-[#34a853]">l</span><span class="text-[#ea4335] pr-2">e </span> <span class="text-black">DGC</span>
       </div>
     </div>
-  </section>
-
-  <!-- links we love a.k.a extras -->
-  <section class="md:py-16 py-8 flex flex-col items-center pt-20 md:pt-10" id="lwl">
-    <div class="container mx-auto px-4 md:px-12 text-center">
-      <h2 class="text-2xl md:text-3xl font-bold text-gray-800">
-        Extras just for <span class="text-purple-700">You</span>
-      </h2>
-      <p class="mt-2 text-lg text-gray-600">
-        Some of our platforms you would ❤️
-      </p>
-    </div>
+    <p class=" text-sm md:text-lg text-gray-400 text-center my-4">
+      Some of our platforms you would ❤️
+    </p>
 
     <!-- gdg Card -->
     <div
-      class="container mx-auto flex flex-col md:flex-row items-center bg-gray-900 rounded-2xl md:rounded-3xl my-8 shadow-lg w-5/6 md:w-4/6 transition-transform transform hover:scale-105 duration-500 py-4 px-6 md:px-8">
+      class="container mx-auto flex flex-col md:flex-row items-center bg-gray-100 border-2 border-gray-800 rounded-2xl md:rounded-3xl shadow-lg w-5/6 md:w-[1200px] transition-transform transform hover:scale-105 duration-500 py-4 px-6 md:px-8 mb-8">
       <!-- Event Image -->
       <div class="flex-shrink-0 md:w-1/3 flex justify-center items-center">
-        <img class="w-32 h-32 md:w-52 md:h-52 object-cover rounded-3xl" src="../src/gdgc-logo.png" alt="DevFest Logo" />
+        <img class="w-32 h-32 md:w-52 md:h-52 object-cover rounded-3xl border-2 border-gray-700"
+          src="../src/gdgc-logo.png" alt="DevFest Logo" />
       </div>
 
       <div class="flex flex-col w-full">
-        <div class="text-center md:text-left p-6 flex-1">
-          <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Google Developer Groups, Lucknow</h3>
-          <p class="text-gray-300 mb-4 text-sm md:text-lg">
+        <div class="text-center md:text-left p-6 gap-4">
+          <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Google Developer Groups, Lucknow</h3>
+          <p class="text-gray-800 mb-4 text-sm md:text-lg">
             As a Google community for developers interested in Google's technologies, GDG Lucknow welcomes participants
             from around the world to engage in a variety of events, from small
             gatherings to larger meetups with demos and talks.
           </p>
           <div class="flex justify-center md:justify-start text-sm md:text-md">
             <button type="button"
-              class="bg-white text-black w-auto py-3 px-8 md:px-14 rounded-md md:rounded-xl transition-colors duration-500 hover:bg-black hover:text-white border-2 border-black hover:border-gray-600 hover:border-2">
+              class="hover:bg-white hover:text-black w-auto py-3 px-8 md:px-14 rounded-md md:rounded-xl transition-colors duration-500 bg-gray-700 text-white border-2 hover:border-gray-600 hover:border-2">
               <a href="https://gdg.community.dev/gdg-lucknow/">Visit GDG</a>
             </button>
           </div>
@@ -900,18 +745,18 @@
     <!-- tensor -->
 
     <div
-      class="container mx-auto flex flex-col md:flex-row items-center bg-gray-900 rounded-2xl md:rounded-3xl shadow-lg w-5/6 md:w-4/6 transition-transform transform hover:scale-105 duration-500 py-4 px-6 md:px-8">
+      class="container mx-auto flex flex-col md:flex-row items-center bg-gray-100 border-2 border-gray-800 rounded-2xl md:rounded-3xl shadow-lg w-5/6 md:w-[1200px] transition-transform transform hover:scale-105 duration-500 py-4 px-6 md:px-8">
       <!-- Event Image -->
       <div class="flex-shrink-0 md:w-1/3 flex justify-center items-center">
-        <img class="w-32 h-32 md:w-52 md:h-52 object-scale-down bg-white rounded-3xl" src="../src/tfug.png"
-          alt="DevFest Logo" />
+        <img class="w-32 h-32 md:w-52 md:h-52 object-scale-down bg-white border-2 border-gray-800 rounded-3xl"
+          src="../src/tfug.png" alt="DevFest Logo" />
       </div>
 
       <!-- Event Details -->
       <div class="flex flex-col w-full">
-        <div class="text-center md:text-left p-6 flex-1">
-          <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Tensor Flow User Group, Lucknow</h3>
-          <p class="text-gray-300 mb-4 text-sm md:text-lg">
+        <div class="text-center md:text-left p-6 gap-4">
+          <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Tensor Flow User Group, Lucknow</h3>
+          <p class="text-gray-800 text-sm md:text-lg mb-4">
             At TensorFlow UG Lucknow, a community of tech enthusiasts exploring the
             possibilities of AI and ML. We bring together students, professionals,
             and industry experts for discussions & workshops for collaboration,
@@ -919,7 +764,7 @@
           </p>
           <div class="flex justify-center md:justify-start text-sm md:text-md">
             <button type="button"
-              class="bg-white text-black w-auto py-3 px-8 md:px-14 rounded-md md:rounded-xl transition-colors duration-500 hover:bg-black hover:text-white border-2 border-black hover:border-gray-600 hover:border-2">
+              class="bg-gray-700 text-white w-auto py-3 px-8 md:px-14 rounded-md md:rounded-xl transition-colors duration-500 hover:bg-white hover:text-black border-2 hover:border-gray-600 hover:border-2">
               <a href="https://www.commudle.com/communities/tfug-lucknow">Visit TFUG</a>
             </button>
           </div>
@@ -930,86 +775,203 @@
     <!-- LAI -->
 
     <div
-      class="container mx-auto flex flex-col md:flex-row items-center bg-gray-900 rounded-2xl md:rounded-3xl shadow-lg w-5/6 md:w-4/6 transition-transform transform hover:scale-105 duration-500 py-4 mt-8 px-6 md:px-8">
+      class="container mx-auto flex flex-col md:flex-row items-center border-2 border-gray-800 bg-gray-100 rounded-2xl md:rounded-3xl shadow-lg w-5/6 md:w-[1200px] transition-transform transform hover:scale-105 duration-500 py-4 mt-8 px-6 md:px-8">
       <!-- Event Image -->
       <div class="flex-shrink-0 md:w-1/3 flex justify-center items-center">
-        <img class="w-32 h-32 md:w-52 md:h-52 object-scale-down bg-white rounded-3xl" src="../src/lai.png"
-          alt="DevFest Logo" />
+        <img class="w-32 h-32 md:w-52 md:h-52 object-scale-down bg-white border-2 border-gray-800 rounded-3xl"
+          src="../src/lai.png" alt="DevFest Logo" />
       </div>
 
       <!-- Event Details -->
       <div class="flex flex-col w-full">
         <div class="text-center md:text-left p-6 flex-1">
-          <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Lucknow AI Labs</h3>
-          <p class="text-gray-300 mb-4 text-sm md:text-lg">
+          <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Lucknow AI Labs</h3>
+          <p class="text-gray-800 mb-4 text-sm md:text-lg">
             Founded by Aaditya (Ankit), a senior research engineer with over 6 years
-            in AI research, Lucknow AI Labs is a community of developers and mentors dedicated to advancing AI & ML literacy in Lucknow through
+            in AI research, Lucknow AI Labs is a community of developers and mentors dedicated to advancing AI & ML
+            literacy in Lucknow through
             collaborative workshops & meetups.
           </p>
           <div class="flex justify-center md:justify-start text-sm md:text-md">
             <button type="button"
-              class="bg-white text-black w-auto py-3 px-8 md:px-14 rounded-md md:rounded-xl transition-colors duration-500 hover:bg-black hover:text-white border-2 border-black hover:border-gray-600 hover:border-2">
+              class="bg-gray-700 text-white w-auto py-3 px-8 md:px-14 rounded-md md:rounded-xl transition-colors duration-500 hover:bg-white hover:text-black border-2 hover:border-gray-600 hover:border-2">
               <a href="https://lucknowai.github.io/">Visit LAI</a>
             </button>
           </div>
         </div>
       </div>
     </div>
+    <div class="container mx-auto px-0 lg:px-12 flex flex-col justify-start items-center">
+      <div
+        class="container justify-center flex flex-col md:flex-row items-center bg-none rounded-2xl md:rounded-3xl shadow-lg w-5/6 md:w-10/12 transition-transform transform duration-500 py-4 mt-4 px-0">
+        <div class=" grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-8 mx-0">
+          <!-- CARD 1 -->
+          <div
+            class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
+            <div class="flex items-center justify-center mt-4">
+              <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+                alt="GDGC Logo" />
+            </div>
+            <div class="p-4 text-center flex-1">
+              <h2 class="text-xl font-bold text-black mb-2">
+                Babu Banarasi Das Institute of Technology and Management
+              </h2>
+              <p class="text-black mb-4">
+                <i class="fas fa-map-marker-alt text-black mr-2"></i>
+                Ayodhya Rd, Lucknow, Uattardhona, Uttar Pradesh
+              </p>
+            </div>
+            <a href="https://gdg.community.dev/gdg-on-campus-babu-banarasi-das-institute-of-technology-and-management-lucknow-india/"
+              class="ui-btn mb-2">
+              <span>View Chapter</span>
+            </a>
+          </div>
+
+          <!-- CARD 2 -->
+          <div
+            class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
+            <div class="flex items-center justify-center mt-4">
+              <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+                alt="GDGC Logo" />
+            </div>
+            <div class="p-4 text-center flex-1">
+              <h2 class="text-xl font-bold text-black mb-2">
+                Shri Ramswaroop Memorial College of Engineering and Management
+              </h2>
+              <p class="text-black mb-4">
+                <i class="fas fa-map-marker-alt text-black mr-2"></i>
+                C-2/42, Service Rd, Lucknow, Uattardhona, Uttar Pradesh
+              </p>
+            </div>
+            <a href="https://gdg.community.dev/gdg-on-campus-shri-ramswaroop-memorial-college-of-engineering-and-management-lucknow-india/"
+              class="ui-btn mb-2">
+              <span>View Chapter</span>
+            </a>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="rounded-2xl px-10 w-fu py-2 overflow-hidden shadow-xl  bg-white transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
+            <div class="flex items-center justify-center mt-4">
+              <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+                alt="GDGC Logo" />
+            </div>
+            <div class="p-4 text-center flex-1">
+              <h2 class="text-xl font-bold text-black mb-2">
+                Integral University Lucknow
+              </h2>
+              <p class="text-black mb-4">
+                <i class="fas fa-map-marker-alt text-black mr-2"></i>
+                Kursi Rd, Dashauli, Uttar Pradesh
+              </p>
+            </div>
+
+            <a href="https://gdg.community.dev/gdg-on-campus-integral-university-lucknow-india/" class="ui-btn mb-2">
+              <span>View Chapter</span>
+            </a>
+          </div>
+          <!-- CARD 4 -->
+          <div
+            class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
+            <div class="flex items-center justify-center mt-4">
+              <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+                alt="GDGC Logo" />
+            </div>
+            <div class="p-4 text-center flex-1">
+              <h2 class="text-xl font-bold text-black mb-2">
+                Indian Institute of Information Technology
+              </h2>
+              <p class="text-black mb-4">
+                <i class="fas fa-map-marker-alt text-black mr-2"></i>
+                Chak Ganjaria, C, G. City, Lucknow, Ahmamau, Uttar Pradesh
+              </p>
+            </div>
+            <a href="https://gdg.community.dev/gdg-on-campus-indian-institute-of-information-technology-lucknow-india/"
+              class="ui-btn mb-2">
+              <span>View Chapter</span>
+            </a>
+          </div>
+          <!-- Card 5 -->
+          <div
+            class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
+            <div class="flex items-center justify-center mt-4">
+              <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+                alt="GDGC Logo" />
+            </div>
+            <div class="p-4 text-center flex-1">
+              <h2 class="text-xl font-bold text-black mb-2">
+                Bansal Institute of Engineering & Technology
+              </h2>
+              <p class="text-black mb-4">
+                <i class="fas fa-map-marker-alt text-black mr-2"></i>
+                Mubarakpur, Kamalabad Barhauli, Lucknow, Uttar Pradesh
+              </p>
+            </div>
+            <a href="https://gdg.community.dev/gdg-on-campus-bansal-institute-of-engineering-technology-lucknow-india/"
+              class="ui-btn mb-2">
+              <span>View Chapter</span>
+            </a>
+          </div>
+
+          <!-- Card 6 -->
+          <div
+            class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
+            <div class="flex items-center justify-center mt-4">
+              <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+                alt="GDGC Logo" />
+            </div>
+            <div class="p-4 text-center flex-1">
+              <h2 class="text-xl font-bold text-black mb-2">
+                BN College of Engineering & Technology
+              </h2>
+              <p class="text-black mb-4">
+                <i class="fas fa-map-marker-alt text-black mr-2"></i>
+                Sitapur Rd, Bakshi Ka Talab, Lucknow, Uttar Pradesh
+              </p>
+            </div>
+            <a href="https://gdg.community.dev/gdg-on-campus-bn-college-of-engineering-technology-lucknow-india/"
+              class="ui-btn mb-2">
+              <span>View Chapter</span>
+            </a>
+          </div>
+
+          <!-- Card 7 -->
+          <div
+            class="max-w-sm rounded-2xl overflow-hidden py-2 shadow-xl bg-white transition-transform transform hover:scale-105 flex flex-col duration-500 items-center mx-auto">
+            <div class="flex items-center justify-center mt-4">
+              <img class="w-24 h-24 object-cover rounded-full border-2 border-gray-200" src="../src/gdgc-logo.png"
+                alt="GDGC Logo" />
+            </div>
+            <div class="p-4 text-center flex-1">
+              <h2 class="text-xl font-bold text-black mb-2">
+                Babu Banarasi Das Northern India Institute of Technology
+              </h2>
+              <p class="text-black mb-4">
+                <i class="fas fa-map-marker-alt text-black mr-2"></i>
+                Faizabad Rd, Lucknow, Uattardhona, Uttar Pradesh
+              </p>
+            </div>
+            <a href="https://gdg.community.dev/gdg-on-campus-babu-banarasi-das-northern-india-institute-of-technology-lucknow-india/"
+              class="ui-btn mb-2">
+              <span>View Chapter</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
 
 
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black text-white py-8">
-    <div class="container mx-auto px-6 md:px-12 justify-center text-center">
-      <div class="flex flex-col md:flex-row justify-between">
-        <div class="w-full md:w-1/3 mb-4 flex items-center justify-center md:justify-start">
-          <img src="../src/ld-logo-2.png" alt="logo" class="w-36" />
-
-        </div>
-
-        <div class="flex justify-center gap-6">
-
-          <!-- LinkedIn Icon -->
-          <a class="" href="https://www.linkedin.com/company/google-developer-groups-lucknow/" target="_blank">
-            <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" fill="#0077B5"
-              class="hover:fill-white transition-colors duration-300 ">
-              <path
-                d="M4.98 3.5c0 1.38-1.11 2.5-2.48 2.5S0 4.88 0 3.5 1.11 1 2.48 1 4.98 2.12 4.98 3.5zM.02 8h5v16h-5V8zM8.982 8h4.968v2.155c1.547-2.879 11.018-3.086 11.018 3.714V24h-4.988v-8.399c0-5.052-6.029-4.67-6.029 0V24H8.982V8z" />
-            </svg>
-          </a>
-
-          <!-- Instagram Icon -->
-          <a class="social-link" href="https://www.instagram.com/gdglucknow/" target="_blank">
-            <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" fill="#E1306C"
-              class="hover:fill-white transition-colors duration-300 ">
-              <path
-                d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.796.247 2.213.415a4.408 4.408 0 0 1 1.591.953c.457.458.746.977.953 1.59.167.418.358 1.044.415 2.214.058 1.266.068 1.646.068 4.85s-.012 3.584-.07 4.85c-.056 1.17-.247 1.796-.415 2.213a4.408 4.408 0 0 1-.953 1.591c-.458.457-.977.746-1.59.953-.418.167-1.044.358-2.214.415-1.266.058-1.646.068-4.85.068s-3.584-.012-4.85-.07c-1.17-.056-1.796-.247-2.213-.415a4.408 4.408 0 0 1-1.591-.953c-.457-.458-.746-.977-.953-1.59-.167-.418-.358-1.044-.415-2.214C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.056-1.17.247-1.796.415-2.213a4.408 4.408 0 0 1 .953-1.591c.458-.457.977-.746 1.59-.953.418-.167 1.044-.358 2.214-.415C8.416 2.175 8.796 2.163 12 2.163M12 0C8.738 0 8.332.013 7.052.07 5.769.128 4.825.332 4.067.598 3.31.864 2.732 1.3 2.087 1.944c-.645.644-1.08 1.222-1.346 1.979-.266.758-.47 1.702-.528 2.985C.013 8.332 0 8.738 0 12s.013 3.668.07 4.948c.058 1.283.262 2.227.528 2.985.266.758.7 1.336 1.345 1.98.644.645 1.222 1.08 1.979 1.346.758.266 1.702.47 2.985.528 1.28.057 1.686.07 4.948.07s3.668-.013 4.948-.07c1.283-.058 2.227-.262 2.985-.528.758-.266 1.336-.7 1.98-1.346.645-.644 1.08-1.222 1.346-1.98.266-.758.47-1.702.528-2.985.057-1.28.07-1.686.07-4.948s-.013-3.668-.07-4.948c-.058-1.283-.262-2.227-.528-2.985-.266-.758-.7-1.336-1.346-1.98C19.617.645 19.039.21 18.282.079c-.758-.266-1.702-.47-2.985-.528C15.668.013 15.262 0 12 0z" />
-              <path
-                d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.164a4.002 4.002 0 1 1 0-8.004 4.002 4.002 0 0 1 0 8.004zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z" />
-            </svg>
-          </a>
-
-          <!-- Twitter Icon -->
-          <a class="social-link" href="https://twitter.com/gdglko" target="_blank">
-            <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" fill="#1DA1F2"
-              class="hover:fill-white transition-colors duration-300 ">
-              <path
-                d="M24 4.557a9.832 9.832 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724 9.87 9.87 0 0 1-3.127 1.197 4.916 4.916 0 0 0-8.385 4.482 13.942 13.942 0 0 1-10.11-5.138 4.917 4.917 0 0 0 1.524 6.573A4.903 4.903 0 0 1 .96 9.557v.063a4.916 4.916 0 0 0 3.941 4.827 4.902 4.902 0 0 1-2.212.084 4.918 4.918 0 0 0 4.588 3.417 9.867 9.867 0 0 1-6.102 2.103c-.395 0-.785-.023-1.17-.068a13.945 13.945 0 0 0 7.548 2.213c9.057 0 14.01-7.5 14.01-14.01 0-.213-.004-.425-.014-.637A10.004 10.004 0 0 0 24 4.557z" />
-            </svg>
-          </a>
-        </div>
-
-      </div>
-      <div class="text-center mt-4 md:mt-8 text-gray-400">
-        © 2024 Lucknow.dev. All rights reserved.
-      </div>
-      <p class="mt-2 text-gray-300 text-sm">
-        Developed by: <a href="https://www.linkedin.com/in/sayedafaq/" target="_blank" class="underline">Sayed Afaq</a>
-        & <a href="https://www.linkedin.com/in/adnan-sheikh-303879252/" target="_blank" class="underline">Adnan
-          Sheikh</a>
-      </p>
-    </div>
+  <footer class="flex flex-col bg-black text-gray-200 py-8 gap-4 justify-center items-center">
+    <img src="../src/ld-logo-2.png" alt="" class=" w-28 md:w-36">
+    <p class="text-sm">© 2024 Lucknow.dev. All rights reserved.</p>
   </footer>
 
 
