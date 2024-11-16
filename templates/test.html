@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Service</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+
+
+    <style>
+        .chat-container {
+            display: none;
+            width: 320px;
+            height: 450px;
+            background-color: white;
+            border-radius: 12px;
+            flex-direction: column;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .chat-header {
+            padding: 12px 16px;
+            background-color: #1a1a1a;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .chat-box {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 16px;
+            background-color: #fafafa;
+            scrollbar-width: thin;
+            scrollbar-color: #d1d1d1 #fafafa;
+        }
+
+        .chat-box::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-box::-webkit-scrollbar-track {
+            background: #fafafa;
+        }
+
+        .chat-box::-webkit-scrollbar-thumb {
+            background-color: #d1d1d1;
+            border-radius: 3px;
+        }
+
+        .chat-input-container {
+            padding: 12px;
+            background-color: white;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        #chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #1a1a1a;
+            color: white;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        #chat-button:hover {
+            transform: scale(1.05);
+            background-color: #333;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 8px;
+            background-color: #f3f4f6;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            width: fit-content;
+        }
+
+        .typing-indicator span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #9ca3af;
+            border-radius: 50%;
+            margin-right: 3px;
+            animation: typing 1s infinite;
+        }
+
+        @keyframes typing {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+
+        .animate-in {
+            animation: slideIn 0.3s ease forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .avatar-ai {
+            background-color: #1a1a1a;
+            padding: 4px;
+            margin-right: 8px;
+            border-radius: 50%;
+        }
+
+        .avatar-user {
+            background-color: #404040;
+            padding: 4px;
+            margin-left: 8px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chat-container"
+        class="chat-container w-[350px] max-w-full fixed bottom-4 right-4 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="chat-header flex justify-between items-center p-4 bg-gray-800 text-white">
+            <span class="font-semibold">Nawab AI</span>
+            <button id="close-chat" class="text-gray-200 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div id="chat-box" class="chat-box p-4 max-h-[300px] overflow-auto bg-gray-50 rounded-tl-lg rounded-tr-lg">
+            <div class="flex items-start gap-2.5 animate__animated animate__fadeIn">
+                <div class="avatar-ai bg-blue-500 text-white p-2 rounded-full">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z"
+                            fill="white" />
+                    </svg>
+                </div>
+                <div class="flex flex-col gap-2 w-full max-w-[220px]">
+                    <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                        <span class="text-sm font-semibold text-gray-900">Nawab</span>
+                        <span class="text-sm font-normal text-gray-500"></span>
+                    </div>
+                    <div class="flex flex-col leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl">
+                        <p class="text-sm font-normal text-gray-900">Namaste Janab, Farmaiye kya haal apke</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="typing-indicator flex space-x-1 mt-2">
+                <span class="h-2 w-2 rounded-full bg-gray-500 animate-bounce"></span>
+                <span class="h-2 w-2 rounded-full bg-gray-500 animate-bounce"></span>
+                <span class="h-2 w-2 rounded-full bg-gray-500 animate-bounce"></span>
+            </div>
+        </div>
+
+        <div class="bg-gray-100 text-black border-l-4 border-gray-800 p-2 text-xs flex items-center">
+            <i class="fas fa-info-circle mr-2"></i>
+            Currently Nawab responds only to the current question and doesn't retain conversation context.
+        </div>
+
+        <form id="chat-form" class="flex items-center gap-2 p-3 bg-gray-200 rounded-b-lg">
+            <input type="text" id="user-input"
+                class="w-full px-4 py-2 text-sm text-gray-900 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-600 focus:border-gray-600"
+                placeholder="Type your message..." />
+            <button type="submit" id="send-btn"
+                class="inline-flex justify-center p-2 text-gray-600 rounded-lg cursor-pointer hover:bg-gray-100">
+                <svg class="w-5 h-5 rotate-90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    viewBox="0 0 18 20">
+                    <path
+                        d="m17.914 18.594-8-18a1 1 0 0 0-1.828 0l-8 18a1 1 0 0 0 1.157 1.376L8 18.281V9a1 1 0 0 1 2 0v9.281l6.758 1.689a1 1 0 0 0 1.156-1.376Z" />
+                </svg>
+            </button>
+        </form>
+    </div>
+
+    <button id="chat-button" aria-label="Open chat"
+        class="fixed bottom-4 right-4 bg-blue-500 text-white p-3 rounded-full shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </button>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+
+
+
+        // DOM Elements
+        const chatContainer = document.getElementById('chat-container');
+        const chatButton = document.getElementById('chat-button');
+        const closeButton = document.getElementById('close-chat');
+        const chatBox = document.getElementById('chat-box');
+        const chatForm = document.getElementById('chat-form');
+        const userInput = document.getElementById('user-input');
+        const typingIndicator = document.querySelector('.typing-indicator');
+
+        // State
+        let isChatOpen = false;
+
+        // Toggle chat visibility
+        function toggleChat() {
+            isChatOpen = !isChatOpen;
+            chatContainer.style.display = isChatOpen ? 'flex' : 'none';
+            if (isChatOpen) {
+                userInput.focus();
+            }
+        }
+
+        // Add message to chat
+        function addMessage(message, isUser = false) {
+            const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const messageHTML = `
+        <div class="flex items-start gap-2.5 animate-in ${isUser ? 'justify-end' : ''}">
+          ${!isUser ? `
+            <div class="avatar-ai">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z" fill="white"/>
+              </svg>
+            </div>
+          ` : ''}
+          <div class="flex flex-col gap-1 mb-3   w-full max-w-[220px]">
+            <div class="flex items-center space-x-2 rtl:space-x-reverse ${isUser ? 'justify-end' : ''}">
+              <span class="text-sm font-semibold text-gray-900">${isUser ? 'You' : 'Nawab'}</span>
+              <span class="text-sm font-normal text-gray-500">${timestamp}</span>
+            </div>
+<div class="flex flex-col leading-1.5 p-4 border-gray-200 ${isUser ? 'bg-gray-900 text-white' : 'bg-gray-100'} rounded-e-xl rounded-es-xl">
+    <p class="text-sm font-normal">${marked(message)}</p>
+</div>
+
+          </div>
+          ${isUser ? `
+            <div class="avatar-user">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z" fill="white"/>
+              </svg>
+            </div>
+          ` : ''}
+        </div>
+      `;
+            typingIndicator.insertAdjacentHTML('beforebegin', messageHTML);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+
+        // Show/hide typing indicator
+        function toggleTypingIndicator(show) {
+            typingIndicator.style.display = show ? 'block' : 'none';
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Send message to API
+        async function sendToAPI(message) {
+
+            try {
+
+                const API_URL = "https://ea30-2604-a00-50-39-216-3eff-fe2a-57bc.ngrok-free.app"
+                const response = await fetch(`${API_URL}/${message}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "ngrok-skip-browser-warning": "true"
+
+                    },
+                });
+
+
+                // Check if the response is successful
+                if (!response.ok) {
+                    const errorMessage = await response.text(); // Get the response text if available
+                    throw new Error(`API request failed: ${errorMessage}`);
+                }
+
+                // Parse the response as JSON if successful
+                const data = await response.json();
+
+
+                // Return the response data (adjust based on the response structure)
+                const markdownResponse = data.llm_response || 'Response not available';
+                return marked.parse(markdownResponse);  // Convert Markdown to HTML
+
+            } catch (error) {
+                console.error('API Error:', error.message);
+                // Provide a user-friendly error message
+                return 'Sorry, I encountered an error. Please try again later.';
+            }
+        }
+
+        // Handle sending message
+        async function handleSendMessage(e) {
+            e.preventDefault();
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            // Clear input
+            userInput.value = '';
+
+            // Add user message
+            addMessage(message, true);
+
+            // Show typing indicator
+            toggleTypingIndicator(true);
+
+            // Get bot response
+            const response = await sendToAPI(message);
+
+            // Hide typing indicator and add bot response
+            toggleTypingIndicator(false);
+            addMessage(response);
+        }
+
+        // Event Listeners
+        chatButton.addEventListener('click', toggleChat);
+        closeButton.addEventListener('click', toggleChat);
+        chatForm.addEventListener('submit', handleSendMessage);
+
+        // Prevent chat container from closing when clicking inside it
+        chatContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    </script>
+
+
+</body>
+
+</html>
