@@ -703,6 +703,17 @@
       margin-left: 8px;
       border-radius: 50%;
     }
+
+    .usermsgbox {
+      border-start-start-radius: 0.75rem;
+      border-end-start-radius: 0.75rem;
+      border-end-end-radius: 0.75rem;
+    }
+    .botmsgbox {
+      border-end-start-radius: 0.75rem;
+      border-end-end-radius: 0.75rem;
+      border-start-end-radius: 0.75rem;
+    }
   </style>
 </head>
 
@@ -1212,7 +1223,7 @@
               <span class="text-sm font-semibold text-gray-900">${isUser ? 'You' : 'Nawab'}</span>
               <span class="text-sm font-normal text-gray-500">${timestamp}</span>
             </div>
-<div class="flex flex-col leading-1.5 p-4 border-gray-200 ${isUser ? 'bg-gray-900 text-white' : 'bg-gray-100'} rounded-e-xl rounded-es-xl">
+<div class="flex flex-col leading-1.5 p-4 border-gray-200 ${isUser ? 'bg-gray-900 text-white usermsgbox' : 'bg-gray-200 botmsgbox'}" style="">
     <p class="text-sm font-normal">${marked.parse(message)}</p>
 </div>
 
