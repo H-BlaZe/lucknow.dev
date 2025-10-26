@@ -1,0 +1,65 @@
+/* Button Styles */
+.btn {
+  padding: 1.25rem 2.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  border: 3px solid var(--black);
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 6px 6px 0 0 var(--black);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.btn-primary {
+  background: var(--green-accent);
+  color: var(--black);
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--black);
+}
+
+.btn:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 0 var(--black);
+}
+
+.btn:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0 0 0 0 var(--black);
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-block;
+  padding: 0.65rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: 3px solid var(--black);
+  box-shadow: 4px 4px 0 0 var(--black);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.badge-default {
+  background: var(--green-accent);
+  color: var(--black);
+}
+
+.badge-alt {
+  background: var(--green-light);
+  color: var(--black);
+}
+
+.badge-dark {
+  background: var(--black);
+  color: var(--green-accent);
+  font-family: 'Space Mono', monospace;
+}

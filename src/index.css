@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+/* Google Sans / Product Sans alternative - using similar web font */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+:root {
+  --green-primary: #0F9D58;
+  --green-secondary: #34A853;
+  --green-accent: #A8F5D4;
+  --green-light: #D4F7E8;
+  --green-dark: #0D7A45;
+  --black: #0F172A;
+  --white: #FFFFFF;
+  --gray-bg: #F8FAFC;
+  --gray-light: #E2E8F0;
+  --gray-dark: #475569;
+  --cream: #FFFEF9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+  background: var(--white);
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Product Sans fallback */
+.product-sans {
+  font-family: 'DM Sans', 'Space Grotesk', sans-serif;
+}
