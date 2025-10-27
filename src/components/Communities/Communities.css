@@ -158,6 +158,22 @@
   display: grid;
   gap: 1.5rem;
   align-items: stretch;
+  width: 100%;
+  grid-template-columns: 1fr; /* Mobile default */
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) {
+  .campus-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop and larger: 3 columns */
+@media (min-width: 1024px) {
+  .campus-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 
