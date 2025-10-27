@@ -4,7 +4,7 @@ export const COMMUNITIES = [
     name: 'GOOGLE\nDEVELOPER\nGROUPS',
     icon: '/gdglogo.jpg',
     description: 'Community for developers passionate about Google technologies',
-    url: 'https://gdg.community.dev/gdg-lucknow/',
+    url: 'https://gdg.lucknow.dev',
     buttonText: 'VISIT GDG →'
   },
   {
@@ -67,6 +67,13 @@ export const CAMPUSES = [
     full: 'NH-24, Sitapur Road, Bakshi Ka Talab, Lucknow, Uttar Pradesh, India',
     icon: '/bncet.jpg',
     url: 'https://gdg.community.dev/gdg-on-campus-bn-college-of-engineering-technology-lucknow-india/'
+  },
+  {
+    id: 7,
+    name: 'Babu Banarasi Das Northern India Institute of Technology',
+    full: '11, Faizabad Rd, Atif Vihar, Lucknow, Uattardhona, Uttar Pradesh, India',
+    icon: '/bbditm.png',
+    url: 'https://gdg.community.dev/gdg-on-campus-babu-banarasi-das-northern-india-institute-of-technology-lucknow-india/'
   }
 ];
 

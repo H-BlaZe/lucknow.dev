@@ -6,6 +6,9 @@ import { COMMUNITIES, CAMPUSES } from "../../data/constants";
 import "./Communities.css";
 
 const Communities = () => {
+  
+  const cols = Math.min(CAMPUSES.length || 1, 3); // 1..3
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -54,11 +57,14 @@ const Communities = () => {
             <span className="campus-title-highlight">GDGC</span> Campus
             Chapters
           </h3>
-          <div className="campus-grid">
-            {CAMPUSES.map((campus, index) => (
-              <CampusCard key={index} {...campus} index={index} />
-            ))}
-          </div>
+           <div
+    className="campus-grid"
+    style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
+  >
+    {CAMPUSES.map((campus, index) => (
+      <CampusCard key={index} {...campus} index={index} />
+    ))}
+  </div>
         
         </div>
       </div>
@@ -67,3 +73,4 @@ const Communities = () => {
 };
 
 export default Communities;
+ 

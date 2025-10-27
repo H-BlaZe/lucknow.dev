@@ -157,23 +157,10 @@
 .campus-grid {
   display: grid;
   gap: 1.5rem;
-
-  /* make all columns' heights uniform */
   align-items: stretch;
 }
 
 
-@media (min-width: 768px) {
-  .campus-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .campus-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
 .campus-card {
   background: var(--white);
