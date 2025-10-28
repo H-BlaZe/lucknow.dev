@@ -1,18 +1,54 @@
 import React from 'react';
 
-const EventTypeCard = ({ icon, title, description, badge, type }) => {
+const EventTypeCard = ({
+  image,
+  category,
+  title,
+  location,
+  dateInfo,
+  timeLeft,
+  description,
+  tags,
+  registerLink,
+  badge,
+}) => {
   return (
-    <div className={`event-type-card ${type} animate-on-scroll`}>
-      <div className="event-type-icon">{icon}</div>
-      <h4 className="event-type-title">
-        {title.split('\n').map((line, idx) => (
-          <React.Fragment key={idx}>
-            {line}{idx < title.split('\n').length - 1 && <br />}
-          </React.Fragment>
-        ))}
-      </h4>
-      <p className="event-type-desc">{description}</p>
-      <div className="event-type-badge">{badge}</div>
+    <div className={`event-type-card animate-on-scroll`}>
+      {image && (
+        <div className="event-type-image">
+          <img src={image} alt={title} />
+        </div>
+      )}
+
+      <div className="event-type-content">
+        <div className="event-type-header">
+          <span className="event-type-category">{category}</span>
+          {badge && <span className="event-type-badge">{badge}</span>}
+        </div>
+
+        <h3 className="event-type-title">{title}</h3>
+
+        <div className="event-type-meta">
+          <p><strong>📍</strong> {location}</p>
+          <p><strong>🗓️</strong> {dateInfo}</p>
+        </div>
+
+        <p className="event-type-desc">{description}</p>
+
+        {tags && (
+          <div className="event-type-tags">
+            {tags.map((tag, idx) => (
+              <span key={idx} className="event-type-tag">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        {registerLink && (
+          <a href={registerLink} target="_blank" rel="noopener noreferrer" className="event-register-btn">
+            Register Now →
+          </a>
+        )}
+      </div>
     </div>
   );
 };

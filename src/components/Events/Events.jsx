@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Badge from '../Common/Badge';
 import FeaturedEvent from './FeaturedEvent';
-// import EventTypeCard from './EventTypeCard';
+import EventTypeCard from './EventTypeCard';
 import { EVENT_TYPES } from '../../data/constants';
 import './Events.css';
 
@@ -44,11 +44,11 @@ const Events = () => {
 
         <FeaturedEvent />
 
-        {/* <div className="event-types-grid">
+        <div className="event-types-grid">
           {EVENT_TYPES.map(event => (
             <EventTypeCard key={event.id} {...event} />
           ))}
-        </div> */}
+        </div>
       </div>
     </section>
   );

@@ -80,27 +80,17 @@ export const CAMPUSES = [
 export const EVENT_TYPES = [
   {
     id: 1,
-    icon: '🎯',
-    title: 'TECH\nMEETUPS',
-    description: 'Monthly gatherings for developers to share knowledge and network',
-    badge: 'MONTHLY',
-    type: 'type-1'
-  },
-  {
-    id: 2,
-    icon: '💡',
-    title: 'HANDS-ON\nWORKSHOPS',
-    description: 'Practical sessions on latest technologies and best practices',
-    badge: 'BI-WEEKLY',
-    type: 'type-2'
-  },
-  {
-    id: 3,
-    icon: '🏆',
-    title: 'BUILD\nMARATHONS',
-    description: '24-48 hour coding sprints with fellow developers',
-    badge: 'QUARTERLY',
-    type: 'type-3'
+    image: '/genai-hackathon-2025.jpg',
+    category: 'Hackathon',
+    title: 'GenAI Hackathon\nLucknow 2025',
+    location: 'Lucknow',
+    dateInfo: '6th November 2025',
+    description:
+      'Biggest multi-location hackathon in Lucknow till now | 250+ participants | 5 themes | 6 hours of challenge | Mentoring by professionals | 1 big celebration along with some surprises',
+    tags: ['AI/ML', 'GenAI', 'Web', 'BuildWithAI', 'Google Cloud'],
+    registerLink:
+      'https://www.commudle.com/communities/317/hackathons/genai-hackathon-lucknow/fill-form/65',
+    badge: 'LIVE NOW',
   }
 ];
 
