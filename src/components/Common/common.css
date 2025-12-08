@@ -25,6 +25,11 @@
   color: var(--black);
 }
 
+.btn-tertiary {
+  background: #db570a;
+  color: var(--white);
+}
+
 .btn:hover {
   transform: translate(3px, 3px);
   box-shadow: 3px 3px 0 0 var(--black);

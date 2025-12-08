@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FEATURED_EVENT_TAGS } from "../../data/constants";
 import Countdown from "./Countdown";
+import { FaCheckCircle } from "react-icons/fa";
 
 const IMAGES = [
   "/slide1.jpg",
@@ -48,9 +49,11 @@ const FeaturedEvent = () => {
             Lucknow 2025
           </h3>
       <div
-        style={{ marginBottom:"1rem", display: "flex", justifyContent: "left" }}
+        style={{ marginBottom:"1rem", display: "flex", justifyContent: "left", alignItems: "center", fontSize: "1.1rem", fontWeight: "600", gap: "0.5rem" }}
       >
-        <Countdown />
+        {/* <Countdown /> */}
+        <FaCheckCircle style={{color:"green"}} />
+        EVENT WAS A SUCCESS
       </div>
 
           <p className="event-description">
@@ -68,12 +71,12 @@ const FeaturedEvent = () => {
           </div>
 
           <a
-            href="https://www.commudle.com/communities/gdg-lucknow/events/devfest-lucknow-2025"
+            href="https://gdg.community.dev/events/details/google-gdg-lucknow-presents-devfest-lucknow-2025/cohost-gdg-lucknow"
             target="_blank"
             rel="noopener noreferrer"
             className="event-cta"
           >
-            REGISTER NOW →
+            View Event →
           </a>
         </div>
       </div>

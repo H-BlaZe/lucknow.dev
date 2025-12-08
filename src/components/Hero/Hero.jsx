@@ -1,14 +1,52 @@
-import React, { useEffect, useRef, useState } from 'react';
-import Button from '../Common/Button';
-import Badge from '../Common/Badge';
-import { smoothScrollTo } from '../../utils/helpers';
-import { STATS } from '../../data/constants';
-import './Hero.css';
+import React, { useEffect, useRef, useState } from "react";
+import Button from "../Common/Button";
+import Badge from "../Common/Badge";
+import { smoothScrollTo } from "../../utils/helpers";
+import { STATS } from "../../data/constants";
+import "./Hero.css";
+
+
+import confetti from "canvas-confetti";
+
 
 const Hero = () => {
   const heroRef = useRef(null);
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+
+    const bannerRef = useRef(null);
+
+  useEffect(() => {
+    const target = bannerRef.current;
+
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            fireConfetti(); // trigger once
+            observer.unobserve(target); // stop after first trigger
+          }
+        });
+      },
+      { threshold: 1 } // 50% visible
+    );
+
+    observer.observe(target);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const fireConfetti = () => {
+    confetti({
+      particleCount: 420,
+      spread: 120,
+      origin: { y: 0.4 },
+      gravity: 0.6,
+      ticks:350
+    });
+  };
 
   useEffect(() => {
     setIsVisible(true);
@@ -17,8 +55,8 @@ const Hero = () => {
       setScrollY(window.scrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleClick = (e, href) => {
@@ -34,47 +72,66 @@ const Hero = () => {
   return (
     <section className="hero" id="home" ref={heroRef}>
       {/* Animated Background Elements */}
-      <div className="hero-bg-wrapper" style={{ transform: `translateY(${parallaxY}px)` }}>
+      <div
+        className="hero-bg-wrapper"
+        style={{ transform: `translateY(${parallaxY}px)` }}
+      >
         <div className="hero-grid-bg" />
         <div className="hero-gradient-orb hero-gradient-orb-1" />
         <div className="hero-gradient-orb hero-gradient-orb-2" />
         <div className="hero-gradient-orb hero-gradient-orb-3" />
       </div>
-      
+
       {/* Floating Shapes with Parallax */}
-      <div 
-        className="hero-shape hero-shape-1" 
-        style={{ transform: `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.1}deg)` }}
+      <div
+        className="hero-shape hero-shape-1"
+        style={{
+          transform: `translateY(${scrollY * 0.3}px) rotate(${
+            scrollY * 0.1
+          }deg)`,
+        }}
       />
-      <div 
-        className="hero-shape hero-shape-2" 
-        style={{ transform: `translateY(${scrollY * 0.4}px) rotate(${45 + scrollY * 0.15}deg)` }}
+      <div
+        className="hero-shape hero-shape-2"
+        style={{
+          transform: `translateY(${scrollY * 0.4}px) rotate(${
+            45 + scrollY * 0.15
+          }deg)`,
+        }}
       />
-      <div 
-        className="hero-shape hero-shape-3" 
+      <div
+        className="hero-shape hero-shape-3"
         style={{ transform: `translateY(${scrollY * 0.2}px)` }}
       />
-      <div 
-        className="hero-shape hero-shape-4" 
-        style={{ transform: `translateY(${scrollY * 0.25}px) rotate(${scrollY * -0.1}deg)` }}
+      <div
+        className="hero-shape hero-shape-4"
+        style={{
+          transform: `translateY(${scrollY * 0.25}px) rotate(${
+            scrollY * -0.1
+          }deg)`,
+        }}
       />
 
       {/* Main Content */}
       <div className="container hero-content">
-        <div 
-          className={`hero-card ${isVisible ? 'hero-card-visible' : ''}`}
-          style={{ 
+        <div
+          className={`hero-card ${isVisible ? "hero-card-visible" : ""}`}
+          style={{
             opacity: opacity,
-            transform: `scale(${scale})`
+            transform: `scale(${scale})`,
           }}
         >
           <div className="hero-card-content">
+            {/* AI Impact Summit Banner */}
+
             <Badge variant="dark" className="hero-badge-animated">
-            THE NAWAB ECOSYSTEM
+              THE NAWAB ECOSYSTEM
             </Badge>
 
             <h1 className="hero-title">
-              <span className="hero-title-line hero-title-line-1">Built For & By</span>
+              <span className="hero-title-line hero-title-line-1">
+                Built For & By
+              </span>
               <span className="hero-title-line hero-title-line-2">
                 the <span className="hero-highlight">Developers</span>
               </span>
@@ -84,31 +141,69 @@ const Hero = () => {
             </h1>
 
             <p className="hero-description">
-              Your premier hub for tech events, learning, and building meaningful 
-              connections in Lucknow's thriving developer ecosystem.
+              Your premier hub for tech events, learning, and building
+              meaningful connections in Lucknow's thriving developer ecosystem.
             </p>
+            <div className="ai-summit-banner" ref={bannerRef}>
+              <div className="ai-summit-logos">
+                <img
+                  src="https://impact.indiaai.gov.in/ai-impact-logo.png"
+                  alt="AI Impact Summit 2026"
+                  className="ai-summit-logo"
+                />
+                <div
+                  style={{
+                    backgroundColor: "black",
+                    padding: "4px",
+                    borderRadius: "4px",
+                  }}
+                >
+                  <img
+                    src="https://impact.indiaai.gov.in/home/india-ai-logo.svg"
+                    alt="IndiaAI"
+                    className="ai-summit-logo indiaai-logo"
+                  />
+                </div>
+              </div>
+
+              <p className="ai-summit-note">
+                <span>
+                  <span style={{ fontWeight: "bold" }}>DevFest Lucknow</span> is
+                  the Official Pre-Summit Event of the AI Impact Summit 2026
+                </span>
+              </p>
+            </div>
 
             <div className="hero-buttons">
-              <Button 
-                variant="primary" 
-                onClick={(e) => handleClick(e, '#events')}
+              <Button
+                variant="primary"
+                onClick={(e) => handleClick(e, "#events")}
                 className="hero-btn-animated"
               >
                 Explore Events →
               </Button>
-              <Button 
-                variant="secondary" 
-                onClick={(e) => handleClick(e, '#communities')}
+
+              <Button
+                variant="secondary"
+                onClick={(e) => handleClick(e, "#communities")}
                 className="hero-btn-animated hero-btn-delay"
               >
                 Join Community
+              </Button>
+
+              <Button
+                variant="tertiary"
+                onClick={() => window.open("https://impact.indiaai.gov.in/")}
+                className="hero-btn-animated hero-btn-delay"
+              >
+                India AI Impact Summit 2026
               </Button>
             </div>
 
             <div className="hero-stats">
               {STATS.map((stat, idx) => (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   className={`stat-card ${stat.type} stat-card-animated`}
                   style={{ animationDelay: `${0.6 + idx * 0.1}s` }}
                 >

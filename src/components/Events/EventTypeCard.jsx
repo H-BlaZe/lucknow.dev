@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const EventTypeCard = ({
   image,
@@ -29,8 +29,12 @@ const EventTypeCard = ({
         <h3 className="event-type-title">{title}</h3>
 
         <div className="event-type-meta">
-          <p><strong>📍</strong> {location}</p>
-          <p><strong>🗓️</strong> {dateInfo}</p>
+          <p>
+            <strong>📍</strong> {location}
+          </p>
+          <p>
+            <strong>🗓️</strong> {dateInfo}
+          </p>
         </div>
 
         <p className="event-type-desc">{description}</p>
@@ -38,14 +42,29 @@ const EventTypeCard = ({
         {tags && (
           <div className="event-type-tags">
             {tags.map((tag, idx) => (
-              <span key={idx} className="event-type-tag">{tag}</span>
+              <span key={idx} className="event-type-tag">
+                {tag}
+              </span>
             ))}
           </div>
         )}
 
         {registerLink && (
-          <a href={registerLink} target="_blank" rel="noopener noreferrer" className="event-register-btn">
-            Register Now →
+          // <a href={registerLink} target="_blank" rel="noopener noreferrer" className="event-register-btn">
+          //   Event Completed
+          // </a>
+          <a
+            // href={registerLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="event-register-btn"
+            style={{
+              // pointerEvents: "none", // disables clicking
+              cursor: "not-allowed", // shows disabled cursor
+              opacity: 0.6, // optional: visually looks disabled
+            }}
+          >
+            Event Completed
           </a>
         )}
       </div>
