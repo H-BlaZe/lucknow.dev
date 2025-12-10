@@ -33,7 +33,7 @@ const Events = () => {
     <section className="events-section" id="events">
       <div className="container">
         <div className="section-header">
-          <Badge variant="default">📅 UPCOMING</Badge>
+          <Badge variant="default">📅 COMPLETED</Badge>
           <h2 className="section-title">
             Tech <span className="title-highlight">Events</span>
           </h2>
